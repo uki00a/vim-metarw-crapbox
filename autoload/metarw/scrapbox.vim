@@ -4,15 +4,14 @@ set cpo&vim
 function! s:build_endpoint_url(resource)
   return printf('https://scrapbox.io/api/%s', a:resource)
 endfunction
-
-" TODO 
+ 
 function! s:get_scrapbox_page(project, page)
-  let resource = printf('%s/%s/text', a:project, a:page)
+  let resource = printf('pages/%s/%s/text', a:project, a:page)
   let url = s:build_endpoint_url(resource)
   let res = webapi#http#get(url)
 
   if res.status == 200
-    return webapi#json#decode(res.content)
+    return ['read', {-> res.content}]
   else
     return ['error', string(webapi#json#decode(res.content))]
   endif
@@ -43,7 +42,7 @@ function! metarw#scrapbox#read(fakepath)
 
   let paths = split(fragments[0], '/')
   if len(paths) == 2
-    return ['error', 'not implemented']
+    return s:get_scrapbox_page(paths[0], paths[1])
   else
     return s:list_scrapbox_pages(paths[0])
   endif
