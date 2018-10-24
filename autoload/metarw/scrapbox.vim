@@ -71,5 +71,9 @@ function! metarw#scrapbox#complete(arglead, cmdline, cursorpos)
 
 endfunction
 
+function! metarw#scrapbox#write(fakepath, line1, line2, append_p)
+  return ['error', 'Writing to Scrapbox is not supported']
+endfunction
+
 let &cpo = s:save_cpo
 unlet s:save_cpo

@@ -7,5 +7,4 @@
 
 ## TODO
 
-- [ ] metarw#scrapbox#write
 - [ ] metarw#scrapbox#complete
