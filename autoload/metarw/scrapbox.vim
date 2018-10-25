@@ -66,9 +66,9 @@ function! metarw#scrapbox#read(fakepath)
   endif
 endfunction 
 
-" TODO
+" Not supported
 function! metarw#scrapbox#complete(arglead, cmdline, cursorpos)
-
+  return []
 endfunction
 
 function! metarw#scrapbox#write(fakepath, line1, line2, append_p)
